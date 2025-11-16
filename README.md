@@ -298,6 +298,246 @@ Standard cells legally placed
 
 <img width="1366" height="643" alt="placement legally placed" src="https://github.com/user-attachments/assets/32e00a75-2d79-4e08-8fef-499a3da81628" />
 
+*SECTION-3*
+
+1. To clone custom inverter standard cell design from github repository
+
+```
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+git clone https://github.com/nickson-jose/vsdstdcelldesign
+
+cd vsdstdcelldesign
+
+cp /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech .
+
+ls
+
+magic -T sky130A.tech sky130_inv.mag &
+```
+<img width="1366" height="643" alt="image" src="https://github.com/user-attachments/assets/cdb165e6-917c-4f9b-b7d6-a1d637be2df5" />
+
+<img width="1366" height="643" alt="image" src="https://github.com/user-attachments/assets/1e14d359-a213-483f-8236-99fb8a9a6dd8" />
+
+2. To load the custom inverter layout in magic
+
+<img width="1366" height="643" alt="inverter view" src="https://github.com/user-attachments/assets/82265d22-5edc-471a-8667-254d79e3b463" />
+
+NMOS
+
+<img width="1366" height="643" alt="nmos" src="https://github.com/user-attachments/assets/9873f568-6f3b-4455-ba54-409c20dc0aa6" />
+
+PMOS
+
+<img width="1366" height="643" alt="pmos" src="https://github.com/user-attachments/assets/62200890-2a65-4f7c-8631-022bb4dd3ad2" />
+
+PMOS source connectivity to VPWR verified
+
+<img width="1366" height="643" alt="image" src="https://github.com/user-attachments/assets/890865e5-5d0c-4a9d-8753-6410018619ac" />
+
+NMOS source connectivity to VSS VGND verified
+
+<img width="1366" height="643" alt="nmos conn gnd" src="https://github.com/user-attachments/assets/df793064-96d2-418e-85ad-3bbc21c2534a" />
+
+Output Y connected to PMOS and NMOS verified 
+
+<img width="1366" height="643" alt="y conn" src="https://github.com/user-attachments/assets/6413ca94-98d5-4af8-b85f-27b113ca39a6" />
+
+Deleting necessary layout to check for DRC error
+
+<img width="1366" height="643" alt="deleting drc" src="https://github.com/user-attachments/assets/9adb4856-6906-42db-852f-ee6f4e9698bb" />
+
+<img width="1366" height="643" alt="drc error" src="https://github.com/user-attachments/assets/0cdb9906-ca9a-4247-9a8d-2cf8768a4ad5" />
+
+3. To spice extraction of inverter in magic.
+
+Commands for tkcon window of magic
+
+```
+pwd
+
+extract all
+
+ext2spice cthresh 0 rthresh 0
+
+ext2spice
+```
+
+
+<img width="1366" height="643" alt="spice created" src="https://github.com/user-attachments/assets/b8d89f88-1b2a-45a5-9c35-81ab88a311d4" />
+
+<img width="1366" height="643" alt="spice cr2" src="https://github.com/user-attachments/assets/71607ba8-5e89-4059-a649-acd16991e3df" />
+
+<img width="1366" height="643" alt="sice file created" src="https://github.com/user-attachments/assets/24d99f8c-efbc-461a-8d23-028459470304" />
+
+4. Editing spice file prior to ngspice simulations
+
+<img width="1366" height="643" alt="image" src="https://github.com/user-attachments/assets/b3e692fb-113e-4900-9fd3-f9312b53fb88" />
+
+5. ngspice simulations
+
+Commands
+
+```
+ngspice sky130_inv.spice
+
+plot y vs time a
+```
+
+<img width="1366" height="643" alt="ngspice run1" src="https://github.com/user-attachments/assets/bc6e7ade-9600-48ab-9567-80768ec63179" />
+
+<img width="1366" height="643" alt="ngspice plot command" src="https://github.com/user-attachments/assets/7d56f31b-232f-4ced-953b-c27bc1982575" />
+
+<img width="1366" height="643" alt="ng plot full" src="https://github.com/user-attachments/assets/c78ff238-bc83-4f55-9c3a-a70ccb7b3d3c" />
+
+Rise transition:
+
+Output to rise 80%
+
+<img width="1366" height="643" alt="rise 80" src="https://github.com/user-attachments/assets/11d212c4-e4e4-47ca-a69c-27826ea61e0f" />
+
+<img width="1366" height="643" alt="rise 80 coordinate" src="https://github.com/user-attachments/assets/25e50487-3056-49af-84cb-1d8fa8c54992" />
+
+Output to rise 20%
+
+<img width="1366" height="643" alt="rise 20" src="https://github.com/user-attachments/assets/d87938c8-909f-42cd-971c-a2346b5f3d71" />
+
+<img width="1366" height="643" alt="rise 20 coordinate" src="https://github.com/user-attachments/assets/6afdda21-b6b9-4994-b725-5f48e425f589" />
+
+Rise Transition Time Calculation
+
+Given:
+- 20% of output = 6.18212 ns
+- 80% of output = 6.24595 ns
+
+Formula:
+Rise Transition Time = Time at 80% − Time at 20%
+
+Calculation:
+Rise Transition Time = 6.24595 ns − 6.18212 ns
+                      = 0.06383 ns
+                      = 63.83 ps
+
+Fall transition:
+
+Output to fall 80%
+
+<img width="1366" height="643" alt="fall 80" src="https://github.com/user-attachments/assets/b892221e-dd89-4729-ae5f-e96c543df5c4" />
+
+<img width="1366" height="643" alt="fall 80 coordinate" src="https://github.com/user-attachments/assets/7822b57a-c254-4a2e-818d-c988e0400d68" />
+
+Output to fall 20%
+
+<img width="1366" height="643" alt="fall 20 plot" src="https://github.com/user-attachments/assets/14b1ff5b-3a78-4bfa-82d9-9f06e75bf1ed" />
+
+<img width="1366" height="643" alt="fall 20 coordinate" src="https://github.com/user-attachments/assets/3203a017-1018-4730-874e-319e23e0bd9c" />
+
+Fall Transition Time Calculation
+
+Given:
+- 80% of output = 8.05278 ns
+- 20% of output = 8.09530 ns
+
+Formula:
+Fall Transition Time = Time at 20% − Time at 80%
+
+Substitution:
+Fall Transition Time = 8.09530 ns − 8.05278 ns
+
+Result:
+Fall Transition Time = 0.04252 ns = 42.52 ps
+
+
+Rise Cell Delay:
+
+50% Screenshots
+
+<img width="1366" height="643" alt="rise cell delay" src="https://github.com/user-attachments/assets/3552bdae-99e6-463a-a333-1971037bdf53" />
+
+<img width="1366" height="643" alt="rise cell del coordinate" src="https://github.com/user-attachments/assets/eda8e7d3-8543-4bc4-9998-3ec62da617cb" />
+
+Rise Cell Delay Calculation
+
+Rise Cell Delay is defined as:
+
+Rise Cell Delay = Time taken for output to rise to 50%  
+                   − Time taken for input to fall to 50%
+
+50% of 3.3 V = 1.65 V
+
+Given:
+- Output at 50% = 6.21116 ns
+- Input at 50%  = 6.15 ns
+
+Calculation:
+Rise Cell Delay = 6.21116 ns − 6.15 ns  
+                 = 0.06116 ns  
+                 = 61.16 ps
+
+Fall Cell Delay:
+
+<img width="1366" height="643" alt="fall cell delay plot" src="https://github.com/user-attachments/assets/2c655702-e5f0-435e-b9e6-62abf53b0b21" />
+
+<img width="1366" height="643" alt="fall cell delay coordinate" src="https://github.com/user-attachments/assets/9b4ef248-ea3b-45dd-9dd5-f86dee7d8a9a" />
+
+**Fall Cell Delay Calculation**
+
+Fall Cell Delay = Time taken for output to fall to 50% − Time taken for input to rise to 50%
+
+50% of 3.3 V = 1.65 V
+
+Given:
+- Output fall 50% crossing time = **1.20777 ns**
+- Input rise 50% crossing time = **1.20503 ns**
+
+Fall Cell Delay = 1.20777 ns − 1.20503 ns  
+                 = **0.00274 ns**  
+                 = **2.74 ps**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

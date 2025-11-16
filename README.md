@@ -135,3 +135,27 @@ Routing connects all placed standard cells by drawing metal interconnects using 
 
 Sign-off verifies that the design is ready for fabrication by performing a series of critical checks. Physical verification includes Design Rule Checking (DRC) to ensure the layout obeys all process constraints and Layout-vs-Schematic (LVS) to confirm the layout matches the logical netlist. Timing verification is done through Static Timing Analysis (STA) to ensure all timing paths meet setup and hold requirements before generating the final GDSII file.
 
+## Lab Implementations 
+
+ *SECTION-1*
+
+ 1. To Run 'picorv32a' design synthesis using OpenLANE flow and generate necessary outputs.
+
+ Steps to invoke OpenLANE flow 
+
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+docker
+
+./flow.tcl -interactive
+
+package require openlane 0.9
+
+prep -design picorv32a
+
+run_synthesis
+
+exit
+
+exit
+

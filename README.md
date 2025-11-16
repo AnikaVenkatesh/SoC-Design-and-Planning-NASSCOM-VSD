@@ -158,5 +158,47 @@ run_synthesis
 
 exit
 
-exit```
+exit
+```
+Screenshots of the steps
+
+<img width="1280" height="768" alt="Starting commands" src="https://github.com/user-attachments/assets/010c858a-0a48-47cc-85a0-1ca1eca80cf9" />
+
+<img width="1280" height="768" alt="starting com2" src="https://github.com/user-attachments/assets/61cabe68-51cd-4919-9f3c-ac08359e7211" />
+
+<img width="1280" height="768" alt="starting_com3" src="https://github.com/user-attachments/assets/a4753326-aa79-40be-ae22-9bc9552e3ecc" />
+
+2. To calculate the flop ratio
+
+<img width="1280" height="768" alt="folder creation" src="https://github.com/user-attachments/assets/68a2e8dc-dc93-436c-9b6a-d9602e6cd9f9" />
+
+<img width="1280" height="768" alt="no of cells" src="https://github.com/user-attachments/assets/9179fbb4-d9b1-4a58-811e-ad1014a83526" />
+
+<img width="1280" height="768" alt="no of dfft" src="https://github.com/user-attachments/assets/b82ac8a8-f30d-41f7-aca3-4fe25cdaee09" />
+
+Calculation of Flop Ratio and DFF % from synthesis statistics report file
+
+### Flop Ratio Calculation
+
+The flop ratio is calculated using the total number of flip-flops divided by the total number of cells:
+
+$$
+\text{Flop Ratio} = \frac{1613}{14876} = 0.108429685
+$$
+
+The percentage of DFFs is obtained by multiplying the flop ratio by 100:
+
+$$
+\text{DFF Percentage} = 0.108429685 \times 100 = 10.84296854\%
+$$
+
+
+
+
+
+
+
+
+
+
 

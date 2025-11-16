@@ -192,6 +192,125 @@ $$
 \text{DFF Percentage} = 0.108429685 \times 100 = 10.84296854\%
 $$
 
+*SECTION-2*
+
+1. To Run 'picorv32a' design floorplan using OpenLANE flow and generate necessary outputs.
+
+Steps to invoke OpenLANE flow 
+
+```bash
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+docker
+
+./flow.tcl -interactive
+
+package require openlane 0.9
+
+prep -design picorv32a
+
+run_synthesis
+
+run_floorplan
+
+
+```
+
+Screenshots
+
+<img width="1366" height="643" alt="run floorplan" src="https://github.com/user-attachments/assets/1cdf5cb6-c425-4c78-8c52-ba2916efdeed" />
+
+<img width="1366" height="643" alt="run floorplan2" src="https://github.com/user-attachments/assets/fa1d3514-c5d8-4976-813a-1bb93cbb757f" />
+
+2. To calulate diarea
+
+<img width="1366" height="643" alt="Diarea" src="https://github.com/user-attachments/assets/cd08972a-8656-4e5d-912c-82fe3e0c07e6" />
+
+1000 Unit Distance = 1 Micron
+
+Die width (units)  = 660685
+Die height (units) = 671405
+
+Die width in microns  = 660685 / 1000 = 660.685 µm
+Die height in microns = 671405 / 1000 = 671.405 µm
+
+Die Area = 660.685 × 671.405 = 443587.212425 µm²
+
+3. Load generated floorplan def in magic tool
+
+```
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/14-11_09-50/results/floorplan/
+
+
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
+```
+
+
+Screenshots of floorplan def in magic:
+
+<img width="1366" height="643" alt="explore fp1 centre" src="https://github.com/user-attachments/assets/ef589252-49c9-433f-b0cd-ae5d1cb138ba" />
+
+Equidistant placement of ports:
+
+<img width="1366" height="643" alt="explore fp2" src="https://github.com/user-attachments/assets/32d2fdba-3a6c-4376-acd0-f2f00e67db31" />
+
+Port layer as set through config.tcl:
+
+<img width="1366" height="643" alt="explore fp3 hori pin" src="https://github.com/user-attachments/assets/00557a42-ef2d-4c4e-83e5-22c6b584f8e5" />
+
+<img width="1366" height="643" alt="explore fp4 vert pin" src="https://github.com/user-attachments/assets/cb4eec00-9d3c-4eb9-9209-e976f12f4843" />
+
+Decap Cells and Tap Cells:
+
+<img width="1366" height="643" alt="explore fp5 decap andtap" src="https://github.com/user-attachments/assets/32803817-29b5-48cb-a70d-edd373cb8f91" />
+
+Diagonally Equidistant Tap cells:
+
+<img width="1366" height="643" alt="explore fp6 diagnally distant tap" src="https://github.com/user-attachments/assets/41ef0cea-9ebe-4a41-aca7-2637a402e47c" />
+
+Unplaced standard cells at the origin
+
+<img width="1366" height="643" alt="explore fp7 std cell" src="https://github.com/user-attachments/assets/be036942-913c-41f6-9984-88bb210dbb9b" />
+
+4. Run 'picorv32a' design congestion aware placement
+
+```
+run_placement
+```
+Screenshots of the command
+
+<img width="1366" height="643" alt="run placement" src="https://github.com/user-attachments/assets/c84661f1-432f-4cc5-a7e4-09c9952c144c" />
+
+```
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/14-11_16-02/results/placement/
+
+
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def &
+
+```
+
+floorplan def in magic at the centre
+
+
+<img width="1366" height="643" alt="placement centre" src="https://github.com/user-attachments/assets/81c84912-0650-4420-b370-5240ffd974c7" />
+
+Standard cells legally placed
+
+<img width="1366" height="643" alt="placement legally placed" src="https://github.com/user-attachments/assets/32e00a75-2d79-4e08-8fef-499a3da81628" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -480,19 +480,129 @@ Fall Cell Delay:
 
 <img width="1366" height="643" alt="fall cell delay coordinate" src="https://github.com/user-attachments/assets/9b4ef248-ea3b-45dd-9dd5-f86dee7d8a9a" />
 
-**Fall Cell Delay Calculation**
+Fall Cell Delay Calculation
 
 Fall Cell Delay = Time taken for output to fall to 50% − Time taken for input to rise to 50%
 
 50% of 3.3 V = 1.65 V
 
 Given:
-- Output fall 50% crossing time = **1.20777 ns**
-- Input rise 50% crossing time = **1.20503 ns**
+- Output fall 50% crossing time = 1.20777 ns
+- Input rise 50% crossing time = 1.20503 ns
 
 Fall Cell Delay = 1.20777 ns − 1.20503 ns  
-                 = **0.00274 ns**  
-                 = **2.74 ps**
+                 = 0.00274 ns  
+                 = 2.74 ps
+
+6. To find problem in the DRC section of the old magic tech file and fix them.
+
+
+Link to Sky130 Periphery rules: https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html
+
+Commands:
+```
+cd
+
+wget http://opencircuitdesign.com/open_pdks/archive/drc_tests.tgz
+
+tar xfz drc_tests.tgz
+
+cd drc_tests
+
+ls -al
+
+gvim .magicrc
+
+magic -d XR &
+```
+
+<img width="1366" height="643" alt="image" src="https://github.com/user-attachments/assets/ec9adc1b-58c3-4885-8a81-f6271a5d784b" />
+
+<img width="1366" height="643" alt="to veiw kywater com2" src="https://github.com/user-attachments/assets/dfc999f2-3da1-4450-9f78-16806bc052b5" />
+
+
+
+.magicrc file
+
+<img width="1366" height="643" alt="magicrc file" src="https://github.com/user-attachments/assets/1bfae76b-75b1-43f9-9e94-bbc5c37f1951" />
+
+
+Incorrect implementation of poly.9 rule:
+
+<img width="1366" height="643" alt="poly9 rule doc" src="https://github.com/user-attachments/assets/9224699f-314f-4194-a14a-6727cda96575" />
+
+Incorrected poly.9
+
+<img width="1366" height="643" alt="poly9 violation" src="https://github.com/user-attachments/assets/8e8d66fa-9fb4-471d-94cc-d4eaa5987c40" />
+
+New commands inserted in sky130A.tech file to update drc
+
+<img width="1366" height="643" alt="image" src="https://github.com/user-attachments/assets/888e6562-a8cb-4952-9f46-792be34ba920" />
+
+<img width="1366" height="643" alt="poly9 text edit2" src="https://github.com/user-attachments/assets/e8127c25-7b5f-4b67-bcef-01d62128663f" />
+
+Rule Implemented 
+
+<img width="1366" height="643" alt="corected poly9 rule" src="https://github.com/user-attachments/assets/9f521bc7-938e-4262-877c-fbebcd567def" />
+
+
+Incorrectly implemented difftap.2:
+
+difftap.2 rule
+
+<img width="1366" height="643" alt="diff rule doc" src="https://github.com/user-attachments/assets/78e35945-bce2-453a-b09d-c4ccbda3a1d4" />
+
+Incorrect implementation difftap.2
+
+<img width="1366" height="643" alt="diff incorrect snap" src="https://github.com/user-attachments/assets/ae65ed1b-d7fc-46e1-88cb-3a75b8612d20" />
+
+New commands inserted in sky130A.tech file to update drc
+
+<img width="1366" height="643" alt="diff text edited" src="https://github.com/user-attachments/assets/7d6551e3-2acb-47dd-b26f-0e354443776f" />
+
+Corrected difftap.2 rule
+
+<img width="1366" height="643" alt="corrected diff rule" src="https://github.com/user-attachments/assets/02594e0b-55a9-4c77-ac31-98f1f57d0ff7" />
+
+
+Incorrectly implemented nwell.4:
+
+nwell.4 rule
+
+<img width="1366" height="643" alt="nwell 4 rule" src="https://github.com/user-attachments/assets/b84ee228-ef99-470d-aa2a-021c14be0c69" />
+
+screenshot of incorrectly implemented
+
+<img width="1366" height="643" alt="nwell incorrect snap" src="https://github.com/user-attachments/assets/55c5266f-83bf-4214-acd8-6ad4f6219b81" />
+
+New commands inserted in sky130A.tech file to update drc
+
+<img width="1366" height="643" alt="nwell text edited" src="https://github.com/user-attachments/assets/c1cc383f-1ff4-4b72-af4f-b35271dd0857" />
+
+<img width="1366" height="643" alt="nwell text edited 2" src="https://github.com/user-attachments/assets/c911e97e-84b1-468d-ad81-eb3d7946cec2" />
+
+Corrected nwell.4
+
+<img width="1366" height="643" alt="corrected nwell rule" src="https://github.com/user-attachments/assets/a0403cf2-67a9-4511-96ba-7d3ff90b3c8e" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

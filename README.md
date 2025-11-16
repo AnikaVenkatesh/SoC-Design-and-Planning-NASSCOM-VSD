@@ -143,7 +143,8 @@ Sign-off verifies that the design is ready for fabrication by performing a serie
 
  Steps to invoke OpenLANE flow 
 
-`cd Desktop/work/tools/openlane_working_dir/openlane
+```bash
+cd Desktop/work/tools/openlane_working_dir/openlane
 
 docker
 
@@ -157,5 +158,5 @@ run_synthesis
 
 exit
 
-exit`
+exit```
 

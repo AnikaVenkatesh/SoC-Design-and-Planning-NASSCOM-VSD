@@ -85,7 +85,8 @@ To design an open-source digital ASIC, several key components are required:
 
 *OpenLANE – Open-Source ASIC Implementation Flow*
 
-<img width="1069" height="567" alt="Screenshot 2025-11-17 020822" src="https://github.com/user-attachments/assets/000825e3-dd4a-427e-9f26-3c48ea1c7005" />
+<img width="819" height="584" alt="Screenshot 2025-11-17 020613" src="https://github.com/user-attachments/assets/b9ff4c2d-88d3-4bfa-976e-c32ac38890a0" />
+
 
 
  1. Synthesis

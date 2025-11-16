@@ -64,3 +64,11 @@ Macros are pre-designed, reusable digital or analog blocks such as SRAMs, multip
 
 <img width="1007" height="588" alt="image" src="https://github.com/user-attachments/assets/1f79a4bb-b1bc-4f05-b657-1ceb0aca2437" />
 
+The three major parts of this course are:
+
+1. RISC-V ISA – Understanding the instruction set architecture that defines how software instructions interact with hardware.
+
+2. RTL and Synthesis of the RISC-V CPU Core (picorv32) – Converting the ISA specification into Verilog RTL and synthesizing it into a gate-level netlist.
+
+3. Physical Design Implementation of picorv32 – Transforming the synthesized netlist into an actual chip layout using the RTL-to-GDSII flow.
+

@@ -877,6 +877,12 @@ unset ::env(LIB_CTS)
 run_cts
 ```
 
+<img width="911" height="503" alt="image" src="https://github.com/user-attachments/assets/c5897805-5088-4c9a-9cfe-4692be4a179b" />
+
+<img width="910" height="498" alt="image" src="https://github.com/user-attachments/assets/3652155a-5dc3-479a-8c77-ba51c490e6b7" />
+
+
+
 ## Lab Implementations-*SECTION-5*
 
 1. Perform generation of Power Distribution Network (PDN)

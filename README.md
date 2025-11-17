@@ -175,7 +175,7 @@ exit
 <img width="1280" height="768" alt="no of dfft" src="https://github.com/user-attachments/assets/b82ac8a8-f30d-41f7-aca3-4fe25cdaee09" />
 
 
-** Flop Ratio Calculation**
+**Flop Ratio Calculation**
 
 The flop ratio is calculated using the total number of flip-flops divided by the total number of cells:
 

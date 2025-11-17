@@ -846,11 +846,9 @@ write_verilog /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/des
 exit
 ```
 
- **To check if instance *_14506_* is replaced with *sky130_fd_sc_hd__or4_4***
+<img width="1366" height="643" alt="image" src="https://github.com/user-attachments/assets/3474f8f1-f62a-47ce-bc04-0238005636a4" />
 
  
-<img width="915" height="500" alt="image" src="https://github.com/user-attachments/assets/0c853756-f9c0-4a12-a8ef-a3b63881ab48" />
-
 Command to load the design
 
 ```
@@ -876,9 +874,108 @@ unset ::env(LIB_CTS)
 run_cts
 ```
 
-<img width="911" height="503" alt="image" src="https://github.com/user-attachments/assets/c5897805-5088-4c9a-9cfe-4692be4a179b" />
+<img width="1366" height="643" alt="command run 0" src="https://github.com/user-attachments/assets/41b38c85-44b9-4428-aa5b-d60192426051" />
 
-<img width="910" height="498" alt="image" src="https://github.com/user-attachments/assets/3652155a-5dc3-479a-8c77-ba51c490e6b7" />
+**11. Post-CTS OpenROAD timing analysis.**
+
+Commands
+
+```
+openroad
+
+read_lef /openLANE_flow/designs/picorv32a/runs/24-03_10-03/tmp/merged.lef
+
+read_def /openLANE_flow/designs/picorv32a/runs/24-03_10-03/results/cts/picorv32a.cts.def
+
+write_db pico_cts.db
+
+read_db pico_cts.db
+
+read_verilog /openLANE_flow/designs/picorv32a/runs/24-03_10-03/results/synthesis/picorv32a.synthesis_cts.v
+
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+
+link_design picorv32a
+
+read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+
+set_propagated_clock [all_clocks]
+
+help report_checks
+
+report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
+
+exit
+```
+
+Screenshots of the same
+
+<img width="1366" height="643" alt="command run openroad" src="https://github.com/user-attachments/assets/17d210e0-7bdc-4b4e-997d-b3196a5774b1" />
+
+<img width="1366" height="643" alt="command run openroad 2" src="https://github.com/user-attachments/assets/00d39cf4-7ff7-40ca-8a1c-7fc651e42e3d" />
+
+<img width="1366" height="643" alt="image" src="https://github.com/user-attachments/assets/0b6cb7a7-3ec3-4653-954c-b147f7c28374" />
+
+
+**12. Analyze post-CTS timing in OpenROAD after removing the `sky130_fd_sc_hd__clkbuf_1` entry from the `CTS_CLK_BUFFER_LIST`.**
+
+Commands
+
+```
+echo $::env(CTS_CLK_BUFFER_LIST)
+
+set ::env(CTS_CLK_BUFFER_LIST) [lreplace $::env(CTS_CLK_BUFFER_LIST) 0 0]
+
+echo $::env(CTS_CLK_BUFFER_LIST)
+
+echo $::env(CURRENT_DEF)
+
+set ::env(CURRENT_DEF) /openLANE_flow/designs/picorv32a/runs/24-03_10-03/results/placement/picorv32a.placement.def
+
+run_cts
+
+echo $::env(CTS_CLK_BUFFER_LIST)
+
+openroad
+
+read_lef /openLANE_flow/designs/picorv32a/runs/24-03_10-03/tmp/merged.lef
+
+read_def /openLANE_flow/designs/picorv32a/runs/24-03_10-03/results/cts/picorv32a.cts.def
+
+write_db pico_cts1.db
+
+read_db pico_cts.db
+
+read_verilog /openLANE_flow/designs/picorv32a/runs/24-03_10-03/results/synthesis/picorv32a.synthesis_cts.v
+
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+
+link_design picorv32a
+
+read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+
+set_propagated_clock [all_clocks]
+
+report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
+
+report_clock_skew -hold
+
+report_clock_skew -setup
+
+exit
+
+echo $::env(CTS_CLK_BUFFER_LIST)
+
+set ::env(CTS_CLK_BUFFER_LIST) [linsert $::env(CTS_CLK_BUFFER_LIST) 0 sky130_fd_sc_hd__clkbuf_1]
+
+echo $::env(CTS_CLK_BUFFER_LIST)
+```
+
+<img width="1366" height="643" alt="final1" src="https://github.com/user-attachments/assets/b02f5406-42aa-425e-a511-907a72131b3c" />
+
+<img width="1366" height="643" alt="final2" src="https://github.com/user-attachments/assets/f13b3be2-8bfe-4f47-b234-7bb4a5f59170" />
+
+<img width="1366" height="643" alt="final3" src="https://github.com/user-attachments/assets/87dfb80b-346e-43fc-995c-5d4d3f9881da" />
 
 
 

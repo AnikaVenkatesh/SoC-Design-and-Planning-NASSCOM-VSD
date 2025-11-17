@@ -647,6 +647,15 @@ ls ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
 
 5. Edit config.tcl
 
+```
+set ::env(LIB_SYNTH) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
+set ::env(LIB_FASTEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__fast.lib"
+set ::env(LIB_SLOWEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__slow.lib"
+set ::env(LIB_TYPICAL) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
+
+set ::env(EXTRA_LEFS) [glob $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/src/*.lef]
+```
+
 <img width="1366" height="643" alt="lef file edited pico" src="https://github.com/user-attachments/assets/0f8b2b2f-d88d-4646-a13c-abf094a7ab64" />
 
 Run Openlane
@@ -719,6 +728,300 @@ tap_decap_or
 <img width="1366" height="643" alt="cell in placement" src="https://github.com/user-attachments/assets/b9353e3c-7b06-404d-a47d-a930a53a3d18" />
 
 <img width="1366" height="643" alt="cell in placement 2" src="https://github.com/user-attachments/assets/b1f55295-154d-4317-a561-56cfee1e369f" />
+
+8. Do Post-Synthesis timing analysis with OpenSTA tool.
+
+Newly created `pre_sta.conf` in `openlane` directory 
+
+<img width="1366" height="643" alt="pre sta conf" src="https://github.com/user-attachments/assets/972e67ba-620b-4898-86e7-bcca4ef2744b" />
+
+Newly Created `my_base.sdc` in `openlane/designs/picorv32a/src` directory 
+
+<img width="1366" height="643" alt="mybase1" src="https://github.com/user-attachments/assets/d86cf248-002e-4ee6-8ff7-71b6e6536033" />
+
+<img width="1366" height="643" alt="my base2" src="https://github.com/user-attachments/assets/400551aa-9dca-46b6-bcd4-5111565b65fa" />
+
+```
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+sta pre_sta.conf
+```
+
+<img width="1366" height="643" alt="sta run1" src="https://github.com/user-attachments/assets/9672c9a6-6283-450d-b69d-35d61742fc13" />
+
+<img width="1366" height="643" alt="sta run2" src="https://github.com/user-attachments/assets/c72ba0ec-eaa3-46b9-9313-d67f501ef6f3" />
+
+<img width="1366" height="643" alt="sta run3" src="https://github.com/user-attachments/assets/4b8631e4-b3c0-4156-ac9a-a10efe60c37f" />
+
+Commands to include new lef and perform synthesis
+
+```
+prep -design picorv32a -tag 16-11_16-06 -overwrite
+
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+
+set ::env(SYNTH_SIZING) 1
+
+set ::env(SYNTH_MAX_FANOUT) 4
+
+echo $::env(SYNTH_DRIVING_CELL)
+
+run_synthesis
+```
+
+<img width="1366" height="643" alt="sta new lef" src="https://github.com/user-attachments/assets/fd96b772-57b5-4ba9-a766-beff9c3c727c" />
+
+<img width="1366" height="643" alt="sta new lef run1" src="https://github.com/user-attachments/assets/d8e785c2-b146-4e23-8c24-ece2ca152243" />
+
+<img width="1366" height="643" alt="sta new lef run2" src="https://github.com/user-attachments/assets/f1d4ea3c-deee-4cc8-a6a8-6f2ef614bec6" />
+
+<img width="1366" height="643" alt="sta new lef run3" src="https://github.com/user-attachments/assets/e3cfaa31-e6a0-454d-a20b-33db7aef34db" />
+
+9. Make timing ECO fixes to remove all violations.
+
+OR gate of drive strength 2 is driving 4 fanouts
+
+<img width="1366" height="643" alt="sta run 4th cts" src="https://github.com/user-attachments/assets/29a20ed1-5bc4-49c1-8934-13a9fcdfbc42" />
+
+```
+report_net -connections _11672_
+
+help replace_cell
+
+replace_cell _14510_ sky130_fd_sc_hd__or3_4
+
+report_checks -fields {net cap slew input_pins} -digits 4
+```
+
+<img width="1366" height="643" alt="sta run new com cts" src="https://github.com/user-attachments/assets/32e5c6c3-6302-41e8-898b-a4b619f5d44f" />
+
+<img width="1366" height="643" alt="sta run com new2" src="https://github.com/user-attachments/assets/bb7b7d5a-b0dd-4499-8175-cee6cc51ee5f" />
+
+<img width="1366" height="643" alt="sta new com cts3" src="https://github.com/user-attachments/assets/22a74818-dbf4-4f0f-bbb0-850e7657c501" />
+
+OR gate of drive strength 2 is driving 4 fanouts
+
+<img width="1366" height="643" alt="sta or2 high" src="https://github.com/user-attachments/assets/c906ccda-78ed-47d0-a30e-90652ab1bda1" />
+
+```
+report_net -connections _11675_
+
+replace_cell _14514_ sky130_fd_sc_hd__or3_4
+
+report_checks -fields {net cap slew input_pins} -digits 4
+```
+
+Slack reduced 
+
+<img width="1366" height="643" alt="sta slec red 3rd com" src="https://github.com/user-attachments/assets/7ecb282b-f844-4a6b-8139-8aa39cf3ff87" />
+
+<img width="1366" height="643" alt="image" src="https://github.com/user-attachments/assets/e2c83287-aaa6-4a2a-9d5b-97d08a7b77ac" />
+
+Commands to verify instance `_14506_` is replaced with `sky130_fd_sc_hd__or4_4`
+
+```
+report_checks -from _29043_ -to _30440_ -through _14506_
+```
+<img width="1366" height="643" alt="replaced instance" src="https://github.com/user-attachments/assets/e3177ef1-ad28-4607-aefe-d978deb63d73" />
+
+10. Replace the old netlist with the new netlist generated after timing ECO fix
+
+Command to make copy of netlist
+```
+cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/16-11_16-06/results/synthesis/
+
+ls
+
+cp picorv32a.synthesis.v picorv32a.synthesis_old.v
+
+ls
+```
+
+
+<img width="1366" height="643" alt="fixed eco new netlist com" src="https://github.com/user-attachments/assets/b6e772aa-040d-47a8-b52b-913a7bbf1c62" />
+
+```
+help write_verilog
+
+write_verilog /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/16-11_16-06/results/synthesis/picorv32a.synthesis.v
+
+exit
+```
+
+ to check if instance *_14506_* is replaced with *sky130_fd_sc_hd__or4_4*
+
+ 
+<img width="915" height="500" alt="image" src="https://github.com/user-attachments/assets/0c853756-f9c0-4a12-a8ef-a3b63881ab48" />
+
+Command to load the design
+
+```
+prep -design picorv32a -tag 16-11_16-06 -overwrite
+
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+
+set ::env(SYNTH_SIZING) 1
+
+run_synthesis
+
+init_floorplan
+place_io
+tap_decap_or
+
+run_placement
+
+unset ::env(LIB_CTS)
+
+run_cts
+```
+
+*SECTION-5*
+
+1. Perform generation of Power Distribution Network (PDN)
+
+
+```
+cd Desktop/work/tools/openlane_working_dir/openlane
+
+docker
+
+./flow.tcl -interactive
+
+package require openlane 0.9
+
+prep -design picorv32a
+
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+
+set ::env(SYNTH_SIZING) 1
+
+run_synthesis
+
+init_floorplan
+place_io
+tap_decap_or
+
+run_placement
+
+unset ::env(LIB_CTS)
+
+run_cts
+
+gen_pdn 
+
+```
+
+<img width="1366" height="643" alt="cts run success" src="https://github.com/user-attachments/assets/99edc695-61cd-450f-9005-41655396b56b" />
+
+<img width="1366" height="643" alt="pdn run success" src="https://github.com/user-attachments/assets/d21ef803-e925-4fd6-a352-8d39343f12bc" />
+
+<img width="1366" height="643" alt="pdn in magic" src="https://github.com/user-attachments/assets/ed6ab2bd-6ac8-486e-98fe-704e3c12e5b3" />
+
+<img width="1366" height="643" alt="pdn in magic 2" src="https://github.com/user-attachments/assets/8ba5a256-ed9c-4691-a42e-096e34562e30" />
+
+2. Perfrom detailed routing using TritonRoute
+
+```
+echo $::env(CURRENT_DEF)
+
+echo $::env(ROUTING_STRATEGY)
+
+run_routing
+```
+
+<img width="1366" height="643" alt="routing complete" src="https://github.com/user-attachments/assets/a27e1872-fc23-4d1d-9715-744a270bd0bd" />
+
+Screenshot of routed def
+
+<img width="1366" height="643" alt="routed def1" src="https://github.com/user-attachments/assets/98a5209f-c6c0-4736-905d-e2299695ef6d" />
+
+<img width="1366" height="643" alt="routed def2" src="https://github.com/user-attachments/assets/a1bf0006-1a60-40f3-b02f-612b727103db" />
+
+<img width="1366" height="643" alt="routed def3" src="https://github.com/user-attachments/assets/602bf4b9-aebd-415e-8874-6648ead36a67" />
+
+3. Post-Route parasitic extraction using SPEF extractor.
+
+```
+cd Desktop/work/tools/SPEF_EXTRACTOR
+
+python3 main.py /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/16-11_16-06/tmp/merged.lef /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/16-11_16-06/results/routing/picorv32a.def
+```
+
+4. Post-Route OpenSTA timing analysis
+
+```
+openroad
+
+read_lef /openLANE_flow/designs/picorv32a/runs/16-11_16-06/tmp/merged.lef
+
+read_def /openLANE_flow/designs/picorv32a/runs/16-11_16-06/results/routing/picorv32a.def
+
+write_db pico_route.db
+
+read_db pico_route.db
+
+read_verilog /openLANE_flow/designs/picorv32a/runs/16-11_16-06/results/synthesis/picorv32a.synthesis_preroute.v
+
+read_liberty $::env(LIB_SYNTH_COMPLETE)
+
+link_design picorv32a
+
+read_sdc /openLANE_flow/designs/picorv32a/src/my_base.sdc
+
+set_propagated_clock [all_clocks]
+
+read_spef /openLANE_flow/designs/picorv32a/runs/16-11_16-06/results/routing/picorv32a.spef
+
+report_checks -path_delay min_max -fields {slew trans net cap input_pins} -format full_clock_expanded -digits 4
+
+exit
+```
+
+<img width="1366" height="643" alt="postroute 1" src="https://github.com/user-attachments/assets/85a2e681-e449-404c-bc01-2c919f6a7eb5" />
+
+<img width="1366" height="643" alt="postroute 2" src="https://github.com/user-attachments/assets/ba09736b-a69c-40e2-a1c9-f2945c26a957" />
+
+<img width="1366" height="643" alt="postroute 3" src="https://github.com/user-attachments/assets/a0a494e3-603c-481a-99f2-0f1ee1915690" />
+
+<img width="1366" height="643" alt="postroute 4" src="https://github.com/user-attachments/assets/5fcd5ffc-2277-4ca4-a8e0-79b73f1cf550" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

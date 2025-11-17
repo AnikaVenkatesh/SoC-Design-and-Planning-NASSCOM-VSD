@@ -91,18 +91,21 @@ To design an open-source digital ASIC, several key components are required:
 
  1. **Synthesis**
 
-<img width="1070" height="574" alt="Screenshot 2025-11-17 020921" src="https://github.com/user-attachments/assets/e94da2c7-9d03-4c33-aca4-8115e8732751" />
+<img width="764" height="574" alt="image" src="https://github.com/user-attachments/assets/8b1e7943-f46b-402d-92d4-ce5a57f9e365" />
+
 
 
 Synthesis converts the RTL description into a gate-level netlist composed of standard cells from the target PDK. The resulting netlist preserves the original RTL functionality but expresses it in terms of physical logic gates. Standard cells include multiple models—electrical (liberty), behavioral (HDL), and layout views (LEF/GDS) that support different EDA processes.
 
 2. **Floorplanning and Power Planning**
 
-<img width="1068" height="563" alt="Screenshot 2025-11-17 021014" src="https://github.com/user-attachments/assets/a0a615d2-4808-442b-aa48-24d1ed7d7316" />
+<img width="766" height="563" alt="image" src="https://github.com/user-attachments/assets/734b04c4-0298-4b17-82ba-3a3d8faeca7a" />
 
-<img width="1070" height="556" alt="Screenshot 2025-11-17 021058" src="https://github.com/user-attachments/assets/9a85f887-cce9-42be-adb0-3054b7079b1a" />
 
-<img width="1070" height="572" alt="Screenshot 2025-11-17 021127" src="https://github.com/user-attachments/assets/f32ca9b2-6bec-4fee-9938-5f18be15eec5" />
+<img width="767" height="556" alt="image" src="https://github.com/user-attachments/assets/9a08f688-e553-4877-9522-bb95876e0865" />
+
+
+<img width="766" height="572" alt="image" src="https://github.com/user-attachments/assets/7734a591-2f65-4409-95ce-96065cfd61a3" />
 
 
 
@@ -110,28 +113,33 @@ Floorplanning arranges all major blocks on the chip die and defines locations fo
 
 3. **Placement**
 
-<img width="1070" height="556" alt="Screenshot 2025-11-17 021149" src="https://github.com/user-attachments/assets/b6be5044-5e8a-4bfc-95fc-981a8fee9df2" />
+<img width="765" height="556" alt="image" src="https://github.com/user-attachments/assets/4e4093c4-cf77-4ee3-ba8b-ce747aff8cab" />
 
-<img width="1071" height="567" alt="Screenshot 2025-11-17 021210" src="https://github.com/user-attachments/assets/32ec3921-bac0-4650-b424-9b00e8827511" />
+
+<img width="765" height="567" alt="image" src="https://github.com/user-attachments/assets/763ff3cf-ab24-463e-9e6d-644fb549196e" />
+
 
 
 Standard cells from the synthesized netlist are placed into predefined rows aligned with the manufacturing grid. Placement aims to minimize wirelength and reduce routing congestion while adhering to timing constraints. The output is a physically-arranged but not yet connected version of the design.
 
 4. **Clock Tree Synthesis (CTS)**
 
-<img width="1072" height="568" alt="Screenshot 2025-11-17 023908" src="https://github.com/user-attachments/assets/3ce84a44-edcb-44f4-aaf8-1737c940b3a6" />
+<img width="769" height="568" alt="image" src="https://github.com/user-attachments/assets/83d9bbda-f484-42aa-90f8-0edffc43280c" />
+
 
 Clock Tree Synthesis is the step where a dedicated clock distribution network is created to deliver the clock signal to all sequential elements—mainly flip-flops—within the design. The goal is to minimize skew so that all elements receive the clock edge as uniformly as possible, even though perfect zero skew is practically impossible. Typically, structured tree topologies such as H-trees or X-trees are used to achieve low-skew, balanced propagation paths.
 
 5. **Routing**
 
-<img width="1072" height="581" alt="Screenshot 2025-11-17 023932" src="https://github.com/user-attachments/assets/a5e0aab1-f372-493a-bf8d-1ce54a1e501b" />
+<img width="765" height="581" alt="image" src="https://github.com/user-attachments/assets/c69f41a8-f666-410e-89a4-4e2da62215da" />
+
 
 Routing connects all placed standard cells by drawing metal interconnects using the available routing layers in the technology (Sky130 uses LI + Metal1–Metal5). The tool assigns horizontal and vertical tracks across multiple layers, inserting vias wherever the routing needs to switch between layers. This stage finalizes the physical wiring so that every net in the gate-level netlist is electrically connected according to the design rules.
 
 6. **Sign-Off**
 
-<img width="1067" height="552" alt="Screenshot 2025-11-17 024035" src="https://github.com/user-attachments/assets/ae682264-2491-433d-a80f-b63d09ee46b3" />
+<img width="763" height="552" alt="image" src="https://github.com/user-attachments/assets/f3103f48-4ca2-4cba-a08c-6873514540fc" />
+
 
 Sign-off verifies that the design is ready for fabrication by performing a series of critical checks. Physical verification includes Design Rule Checking (DRC) to ensure the layout obeys all process constraints and Layout-vs-Schematic (LVS) to confirm the layout matches the logical netlist. Timing verification is done through Static Timing Analysis (STA) to ensure all timing paths meet setup and hold requirements before generating the final GDSII file.
 

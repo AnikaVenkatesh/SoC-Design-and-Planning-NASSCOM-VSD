@@ -9,7 +9,7 @@ The RTL to GDSII flow represents the complete process of transforming a Register
 
 
 ## Introduction to IC Components
-1. *Chip Package*: 
+1. **Chip Package**: 
 The component we usually see on any embedded board is not the actual silicon chip, but the package. The package acts as a protective enclosure for the silicon die, shields it from environmental damage, and provides mechanical stability. It also includes metal leads or balls (in BGA packages) that allow electrical connection between the silicon die and the PCB. Packaging ensures heat dissipation, ease of handling, and reliable integration of the chip onto systems.
 
 <img width="815" height="537" alt="Screenshot 2025-11-17 001309" src="https://github.com/user-attachments/assets/22424e32-c01a-4ee3-862a-8d85274a3b3d" />

@@ -586,6 +586,171 @@ Corrected nwell.4
 <img width="1366" height="643" alt="corrected nwell rule" src="https://github.com/user-attachments/assets/a0403cf2-67a9-4511-96ba-7d3ff90b3c8e" />
 
 
+*SECTION-4*
+
+1. To fix up small DRC errors
+
+Screenshot of tracks.info of sky130_fd_sc_hd
+
+<img width="1366" height="643" alt="tracks info of sky130a" src="https://github.com/user-attachments/assets/c7973d74-b1f0-4ab3-acd4-2cfa1389fa58" />
+
+tkcon window command
+
+```
+help grid
+
+grid 0.46um 0.34um 0.23um 0.17um
+```
+<img width="1366" height="643" alt="command run for grid" src="https://github.com/user-attachments/assets/58a7de6a-c37e-4f57-a787-76ba8a4467ec" />
+
+Condition 1:
+
+<img width="1366" height="643" alt="condition1 grid" src="https://github.com/user-attachments/assets/264e815c-91f6-4d52-8fcf-519a3016bd6e" />
+
+Condition 2:
+
+<img width="356" height="632" alt="Horizontal pitch" src="https://github.com/user-attachments/assets/4c5df2ff-4398-4d46-aadb-9f81daebfe41" />
+
+<img width="846" height="329" alt="horizontal pitch com" src="https://github.com/user-attachments/assets/0fa803a8-ba60-431d-8a12-a2c21bad3aa7" />
+
+Condition 3:
+
+<img width="1071" height="603" alt="condition 3 verified" src="https://github.com/user-attachments/assets/91cc8168-7a09-4dd6-a245-61d3c357bf91" />
+
+2. Save the finalized layout
+
+```
+save sky130_vsdinv.mag
+
+magic -T sky130A.tech sky130_vsdinv.mag &
+
+```
+<img width="1366" height="643" alt="newly saved layout" src="https://github.com/user-attachments/assets/9003e5b8-3cc8-46c2-bc98-1f8a345a84de" />
+
+3. Create lef file
+
+<img width="1366" height="643" alt="image" src="https://github.com/user-attachments/assets/b1a81ab6-588a-4db4-b66c-14f0ced3bbb0" />
+
+4. Copy the newly generated lef to 'picorv32a' directory
+
+```
+cp sky130_vsdinv.lef ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+
+ls ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+
+cp libs/sky130_fd_sc_hd__* ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+
+ls ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
+```
+
+<img width="1366" height="643" alt="lef copy commands" src="https://github.com/user-attachments/assets/4fdd1c51-aaf6-45dc-9b5d-544af9617bf6" />
+
+5. Edit config.tcl
+
+<img width="1366" height="643" alt="lef file edited pico" src="https://github.com/user-attachments/assets/0f8b2b2f-d88d-4646-a13c-abf094a7ab64" />
+
+Run Openlane
+
+<img width="1366" height="643" alt="run command after 1hr" src="https://github.com/user-attachments/assets/f9e5c09c-6c5e-4d94-9fad-bc0ea4b95150" />
+
+<img width="1366" height="643" alt="run com after 1 hr 2" src="https://github.com/user-attachments/assets/78eee086-76c1-49e0-9124-e7f8e2465c8c" />
+
+<img width="1366" height="643" alt="run com after 1 hr 3" src="https://github.com/user-attachments/assets/d3218de9-2e86-4f4d-be03-19a0ea10656b" />
+
+6. Introduction of custom inverter cell
+
+<img width="1366" height="643" alt="time delay run after" src="https://github.com/user-attachments/assets/d7bbe8ff-cc5e-4431-824d-e2598e9d84fb" />
+
+<img width="1366" height="643" alt="area after run" src="https://github.com/user-attachments/assets/db532e97-02a2-4f7a-8c32-b0cb087553bd" />
+
+```
+prep -design picorv32a -tag 16-11_12-42 -overwrite
+
+set lefs [glob $::env(DESIGN_DIR)/src/*.lef]
+add_lefs -src $lefs
+
+echo $::env(SYNTH_STRATEGY)
+
+set ::env(SYNTH_STRATEGY) "DELAY 3"
+
+echo $::env(SYNTH_BUFFERING)
+
+echo $::env(SYNTH_SIZING)
+
+set ::env(SYNTH_SIZING) 1
+
+echo $::env(SYNTH_DRIVING_CELL)
+
+run_synthesis
+```
+
+Increase in area and worst negative slack is reduced to zero
+
+<img width="1366" height="643" alt="new chip area after run" src="https://github.com/user-attachments/assets/57e6bf82-941d-49e0-9f1d-8cc7ce0af1e3" />
+
+<img width="1366" height="643" alt="new chip time after run" src="https://github.com/user-attachments/assets/0e0cfbc0-e69d-428b-af4c-4787b6a41d1c" />
+
+7. After custom inverter acceptance run floorplan and placement
+
+``` run_floorplan```
+
+<img width="1366" height="643" alt="flow failed" src="https://github.com/user-attachments/assets/851fddb2-c4ff-4d5f-a599-88247054bc35" />
+
+Due to an unexpected error change the ```run_floorplan``` command 
+
+```
+init_floorplan
+place_io
+tap_decap_or
+```
+
+<img width="1366" height="643" alt="new com for floorplan" src="https://github.com/user-attachments/assets/fae40a14-e98a-42bc-8f69-3d84e28f6b5f" />
+
+<img width="1366" height="643" alt="new com floor2" src="https://github.com/user-attachments/assets/0bf8be41-4a3b-4fd8-8fb9-44191a92aa8a" />
+
+```run_placement```
+
+<img width="1366" height="643" alt="com for placement" src="https://github.com/user-attachments/assets/2eabbe0f-658a-46f2-9c3d-d62fb8e67e34" />
+
+<img width="1366" height="643" alt="run com for placement" src="https://github.com/user-attachments/assets/b97b21e5-c1bc-479d-af73-e33ca104084c" />
+
+<img width="1366" height="643" alt="placement def in magic" src="https://github.com/user-attachments/assets/12d30afd-b4e1-4d71-bacc-12d57905824e" />
+
+<img width="1366" height="643" alt="cell in placement" src="https://github.com/user-attachments/assets/b9353e3c-7b06-404d-a47d-a930a53a3d18" />
+
+<img width="1366" height="643" alt="cell in placement 2" src="https://github.com/user-attachments/assets/b1f55295-154d-4317-a561-56cfee1e369f" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -135,9 +135,7 @@ Routing connects all placed standard cells by drawing metal interconnects using 
 
 Sign-off verifies that the design is ready for fabrication by performing a series of critical checks. Physical verification includes Design Rule Checking (DRC) to ensure the layout obeys all process constraints and Layout-vs-Schematic (LVS) to confirm the layout matches the logical netlist. Timing verification is done through Static Timing Analysis (STA) to ensure all timing paths meet setup and hold requirements before generating the final GDSII file.
 
-## Lab Implementations 
-
- *SECTION-1*
+## Lab Implementations- *SECTION-1*
 
  1. To Run 'picorv32a' design synthesis using OpenLANE flow and generate necessary outputs.
 
@@ -192,7 +190,7 @@ $$
 \text{DFF Percentage} = 0.108429685 \times 100 = 10.84296854\%
 $$
 
-*SECTION-2*
+## Lab Implementations-*SECTION-2*
 
 1. To Run 'picorv32a' design floorplan using OpenLANE flow and generate necessary outputs.
 
@@ -298,7 +296,7 @@ Standard cells legally placed
 
 <img width="1366" height="643" alt="placement legally placed" src="https://github.com/user-attachments/assets/32e00a75-2d79-4e08-8fef-499a3da81628" />
 
-*SECTION-3*
+## Lab Implementations-*SECTION-3*
 
 1. To clone custom inverter standard cell design from github repository
 
@@ -586,7 +584,7 @@ Corrected nwell.4
 <img width="1366" height="643" alt="corrected nwell rule" src="https://github.com/user-attachments/assets/a0403cf2-67a9-4511-96ba-7d3ff90b3c8e" />
 
 
-*SECTION-4*
+## Lab Implementations-*SECTION-4*
 
 1. To fix up small DRC errors
 
@@ -879,7 +877,7 @@ unset ::env(LIB_CTS)
 run_cts
 ```
 
-*SECTION-5*
+## Lab Implementations-*SECTION-5*
 
 1. Perform generation of Power Distribution Network (PDN)
 

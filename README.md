@@ -147,7 +147,7 @@ Sign-off verifies that the design is ready for fabrication by performing a serie
 
  **1. To Run 'picorv32a' design synthesis using OpenLANE flow and generate necessary outputs.**
 
- Steps to invoke OpenLANE flow 
+ **Steps to invoke OpenLANE flow:**
 
 ```bash
 cd Desktop/work/tools/openlane_working_dir/openlane
@@ -166,7 +166,7 @@ exit
 
 exit
 ```
-**Screenshots of the steps**
+**Screenshots of the steps:**
 
 <img width="1280" height="768" alt="Starting commands" src="https://github.com/user-attachments/assets/010c858a-0a48-47cc-85a0-1ca1eca80cf9" />
 
@@ -183,7 +183,7 @@ exit
 <img width="1280" height="768" alt="no of dfft" src="https://github.com/user-attachments/assets/b82ac8a8-f30d-41f7-aca3-4fe25cdaee09" />
 
 
-**Flop Ratio Calculation**
+**Flop Ratio Calculation:**
 
 The flop ratio is calculated using the total number of flip-flops divided by the total number of cells:
 
@@ -201,7 +201,7 @@ $$
 
 **1. To Run 'picorv32a' design floorplan using OpenLANE flow and generate necessary outputs.**
 
-Steps to invoke OpenLANE flow 
+**Steps to invoke OpenLANE flow:** 
 
 ```bash
 cd Desktop/work/tools/openlane_working_dir/openlane
@@ -221,7 +221,7 @@ run_floorplan
 
 ```
 
-**Screenshots**
+**Screenshots:**
 
 <img width="1366" height="643" alt="run floorplan" src="https://github.com/user-attachments/assets/1cdf5cb6-c425-4c78-8c52-ba2916efdeed" />
 
@@ -273,7 +273,7 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 
 <img width="1366" height="643" alt="explore fp6 diagnally distant tap" src="https://github.com/user-attachments/assets/41ef0cea-9ebe-4a41-aca7-2637a402e47c" />
 
-**Unplaced standard cells at the origin**
+**Unplaced standard cells at the origin:**
 
 <img width="1366" height="643" alt="explore fp7 std cell" src="https://github.com/user-attachments/assets/be036942-913c-41f6-9984-88bb210dbb9b" />
 
@@ -282,7 +282,7 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 ```
 run_placement
 ```
-**Screenshots of the command**
+**Screenshots of the command:**
 
 <img width="1366" height="643" alt="run placement" src="https://github.com/user-attachments/assets/c84661f1-432f-4cc5-a7e4-09c9952c144c" />
 
@@ -305,7 +305,7 @@ magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs
 
 ## Lab Implementations-*Section-3*
 
-**1. To clone custom inverter standard cell design from github repository**
+**1. To clone custom inverter standard cell design from github repository:**
 
 ```
 cd Desktop/work/tools/openlane_working_dir/openlane
@@ -328,27 +328,27 @@ magic -T sky130A.tech sky130_inv.mag &
 
 <img width="1366" height="643" alt="inverter view" src="https://github.com/user-attachments/assets/82265d22-5edc-471a-8667-254d79e3b463" />
 
-**NMOS**
+**NMOS:**
 
 <img width="1366" height="643" alt="nmos" src="https://github.com/user-attachments/assets/9873f568-6f3b-4455-ba54-409c20dc0aa6" />
 
-**PMOS**
+**PMOS:**
 
 <img width="1366" height="643" alt="pmos" src="https://github.com/user-attachments/assets/62200890-2a65-4f7c-8631-022bb4dd3ad2" />
 
-**PMOS source connectivity to VPWR verified**
+**PMOS source connectivity to VPWR verified:**
 
 <img width="1366" height="643" alt="image" src="https://github.com/user-attachments/assets/890865e5-5d0c-4a9d-8753-6410018619ac" />
 
-**NMOS source connectivity to VSS VGND verified**
+**NMOS source connectivity to VSS VGND verified:**
 
 <img width="1366" height="643" alt="nmos conn gnd" src="https://github.com/user-attachments/assets/df793064-96d2-418e-85ad-3bbc21c2534a" />
 
-**Output Y connected to PMOS and NMOS verified** 
+**Output Y connected to PMOS and NMOS verified:** 
 
 <img width="1366" height="643" alt="y conn" src="https://github.com/user-attachments/assets/6413ca94-98d5-4af8-b85f-27b113ca39a6" />
 
-**Deleting necessary layout to check for DRC error**
+**Deleting necessary layout to see for DRC error:**
 
 <img width="1366" height="643" alt="deleting drc" src="https://github.com/user-attachments/assets/9adb4856-6906-42db-852f-ee6f4e9698bb" />
 
@@ -356,7 +356,7 @@ magic -T sky130A.tech sky130_inv.mag &
 
 **3. To spice extraction of inverter in magic.**
 
-Commands for tkcon window of magic
+**Commands for tkcon window of magic:**
 
 ```
 pwd
@@ -381,7 +381,7 @@ ext2spice
 
 **5. ngspice simulations**
 
-Commands
+**Commands:**
 
 ```
 ngspice sky130_inv.spice
@@ -397,19 +397,19 @@ plot y vs time a
 
 **Rise transition:**
 
-**Output to rise 80%**
+**Output to rise 80%:**
 
 <img width="1366" height="643" alt="rise 80" src="https://github.com/user-attachments/assets/11d212c4-e4e4-47ca-a69c-27826ea61e0f" />
 
 <img width="1366" height="643" alt="rise 80 coordinate" src="https://github.com/user-attachments/assets/25e50487-3056-49af-84cb-1d8fa8c54992" />
 
-**Output to rise 20%**
+**Output to rise 20%:**
 
 <img width="1366" height="643" alt="rise 20" src="https://github.com/user-attachments/assets/d87938c8-909f-42cd-971c-a2346b5f3d71" />
 
 <img width="1366" height="643" alt="rise 20 coordinate" src="https://github.com/user-attachments/assets/6afdda21-b6b9-4994-b725-5f48e425f589" />
 
-**Rise Transition Time Calculation**
+**Rise Transition Time Calculation:**
 
 Given:
 - 20% of output = 6.18212 ns
@@ -425,19 +425,19 @@ Rise Transition Time = 6.24595 ns − 6.18212 ns
 
 **Fall transition:**
 
-**Output to fall 80%**
+**Output to fall 80%:**
 
 <img width="1366" height="643" alt="fall 80" src="https://github.com/user-attachments/assets/b892221e-dd89-4729-ae5f-e96c543df5c4" />
 
 <img width="1366" height="643" alt="fall 80 coordinate" src="https://github.com/user-attachments/assets/7822b57a-c254-4a2e-818d-c988e0400d68" />
 
-**Output to fall 20%**
+**Output to fall 20%:**
 
 <img width="1366" height="643" alt="fall 20 plot" src="https://github.com/user-attachments/assets/14b1ff5b-3a78-4bfa-82d9-9f06e75bf1ed" />
 
 <img width="1366" height="643" alt="fall 20 coordinate" src="https://github.com/user-attachments/assets/3203a017-1018-4730-874e-319e23e0bd9c" />
 
-**Fall Transition Time Calculation**
+**Fall Transition Time Calculation:**
 
 Given:
 - 80% of output = 8.05278 ns
@@ -455,13 +455,13 @@ Fall Transition Time = 0.04252 ns = 42.52 ps
 
 **Rise Cell Delay:**
 
-**50% Screenshots**
+**50% Screenshots:**
 
 <img width="1366" height="643" alt="rise cell delay" src="https://github.com/user-attachments/assets/3552bdae-99e6-463a-a333-1971037bdf53" />
 
 <img width="1366" height="643" alt="rise cell del coordinate" src="https://github.com/user-attachments/assets/eda8e7d3-8543-4bc4-9998-3ec62da617cb" />
 
-**Rise Cell Delay Calculation**
+**Rise Cell Delay Calculation:**
 
 Rise Cell Delay is defined as:
 
@@ -485,7 +485,7 @@ Rise Cell Delay = 6.21116 ns − 6.15 ns
 
 <img width="1366" height="643" alt="fall cell delay coordinate" src="https://github.com/user-attachments/assets/9b4ef248-ea3b-45dd-9dd5-f86dee7d8a9a" />
 
-**Fall Cell Delay Calculation**
+**Fall Cell Delay Calculation:**
 
 Fall Cell Delay = Time taken for output to fall to 50% − Time taken for input to rise to 50%
 
@@ -504,7 +504,7 @@ Fall Cell Delay = 1.20777 ns − 1.20503 ns
 
 Link to Sky130 Periphery rules: https://skywater-pdk.readthedocs.io/en/main/rules/periphery.html
 
-Commands:
+**Commands:**
 ```
 cd
 
@@ -527,12 +527,14 @@ magic -d XR &
 
 
 
-**.magicrc file**
+**.magicrc file:**
 
 <img width="1366" height="643" alt="magicrc file" src="https://github.com/user-attachments/assets/1bfae76b-75b1-43f9-9e94-bbc5c37f1951" />
 
 
 **Incorrect implementation of poly.9 rule:**
+
+**Poly rules:**
 
 <img width="1366" height="643" alt="poly9 rule doc" src="https://github.com/user-attachments/assets/9224699f-314f-4194-a14a-6727cda96575" />
 
@@ -540,53 +542,53 @@ magic -d XR &
 
 <img width="1366" height="643" alt="poly9 violation" src="https://github.com/user-attachments/assets/8e8d66fa-9fb4-471d-94cc-d4eaa5987c40" />
 
-**New commands inserted in sky130A.tech file to update drc**
+**New commands inserted in sky130A.tech file to update drc:**
 
 <img width="1366" height="643" alt="image" src="https://github.com/user-attachments/assets/888e6562-a8cb-4952-9f46-792be34ba920" />
 
 <img width="1366" height="643" alt="poly9 text edit2" src="https://github.com/user-attachments/assets/e8127c25-7b5f-4b67-bcef-01d62128663f" />
 
-**Rule Implemented**
+**Rule Implemented:**
 
 <img width="1366" height="643" alt="corected poly9 rule" src="https://github.com/user-attachments/assets/9f521bc7-938e-4262-877c-fbebcd567def" />
 
 
 **Incorrectly implemented difftap.2:**
 
-**difftap.2 rule**
+**difftap.2 rule:**
 
 <img width="1366" height="643" alt="diff rule doc" src="https://github.com/user-attachments/assets/78e35945-bce2-453a-b09d-c4ccbda3a1d4" />
 
-**Incorrect implementation difftap.2**
+**Incorrect implementation difftap.2:**
 
 <img width="1366" height="643" alt="diff incorrect snap" src="https://github.com/user-attachments/assets/ae65ed1b-d7fc-46e1-88cb-3a75b8612d20" />
 
-**New commands inserted in sky130A.tech file to update drc**
+**New commands inserted in sky130A.tech file to update drc:**
 
 <img width="1366" height="643" alt="diff text edited" src="https://github.com/user-attachments/assets/7d6551e3-2acb-47dd-b26f-0e354443776f" />
 
-**Corrected difftap.2 rule**
+**Corrected difftap.2 rule:**
 
 <img width="1366" height="643" alt="corrected diff rule" src="https://github.com/user-attachments/assets/02594e0b-55a9-4c77-ac31-98f1f57d0ff7" />
 
 
 **Incorrectly implemented nwell.4:**
 
-**nwell.4 rule**
+**nwell.4 rule:**
 
 <img width="1366" height="643" alt="nwell 4 rule" src="https://github.com/user-attachments/assets/b84ee228-ef99-470d-aa2a-021c14be0c69" />
 
-**screenshot of incorrectly implemented**
+**screenshot of incorrectly implemented:**
 
 <img width="1366" height="643" alt="nwell incorrect snap" src="https://github.com/user-attachments/assets/55c5266f-83bf-4214-acd8-6ad4f6219b81" />
 
-**New commands inserted in sky130A.tech file to update drc**
+**New commands inserted in sky130A.tech file to update drc:**
 
 <img width="1366" height="643" alt="nwell text edited" src="https://github.com/user-attachments/assets/c1cc383f-1ff4-4b72-af4f-b35271dd0857" />
 
 <img width="1366" height="643" alt="nwell text edited 2" src="https://github.com/user-attachments/assets/c911e97e-84b1-468d-ad81-eb3d7946cec2" />
 
-**Corrected nwell.4**
+**Corrected nwell.4 rule:**
 
 <img width="1366" height="643" alt="corrected nwell rule" src="https://github.com/user-attachments/assets/a0403cf2-67a9-4511-96ba-7d3ff90b3c8e" />
 
@@ -595,11 +597,11 @@ magic -d XR &
 
 **1. To fix up small DRC errors**
 
-**Screenshot of tracks.info of sky130_fd_sc_hd**
+**Screenshot of tracks.info of sky130_fd_sc_hd:**
 
 <img width="1366" height="643" alt="tracks info of sky130a" src="https://github.com/user-attachments/assets/c7973d74-b1f0-4ab3-acd4-2cfa1389fa58" />
 
-**tkcon window command**
+**tkcon window command:**
 
 ```
 help grid
@@ -608,17 +610,17 @@ grid 0.46um 0.34um 0.23um 0.17um
 ```
 <img width="1366" height="643" alt="command run for grid" src="https://github.com/user-attachments/assets/58a7de6a-c37e-4f57-a787-76ba8a4467ec" />
 
-**Condition 1 verified:**
+**Screenshot 1:**
 
 <img width="1366" height="643" alt="condition1 grid" src="https://github.com/user-attachments/assets/264e815c-91f6-4d52-8fcf-519a3016bd6e" />
 
-**Condition 2 verified:**
+**Screenshot 2:**
 
 <img width="356" height="632" alt="Horizontal pitch" src="https://github.com/user-attachments/assets/4c5df2ff-4398-4d46-aadb-9f81daebfe41" />
 
 <img width="846" height="329" alt="horizontal pitch com" src="https://github.com/user-attachments/assets/0fa803a8-ba60-431d-8a12-a2c21bad3aa7" />
 
-**Condition 3 verified:**
+**Screenshot 3:**
 
 <img width="1071" height="603" alt="condition 3 verified" src="https://github.com/user-attachments/assets/91cc8168-7a09-4dd6-a245-61d3c357bf91" />
 
@@ -638,6 +640,10 @@ magic -T sky130A.tech sky130_vsdinv.mag &
 
 **4. Copy the newly generated lef to 'picorv32a' directory**
 
+
+**Commands:**
+
+
 ```
 cp sky130_vsdinv.lef ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
 
@@ -652,6 +658,8 @@ ls ~/Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/src/
 
 **5. Edit config.tcl**
 
+**Commands:**
+
 ```
 set ::env(LIB_SYNTH) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__typical.lib"
 set ::env(LIB_FASTEST) "$::env(OPENLANE_ROOT)/designs/picorv32a/src/sky130_fd_sc_hd__fast.lib"
@@ -663,7 +671,7 @@ set ::env(EXTRA_LEFS) [glob $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/sr
 
 <img width="1366" height="643" alt="lef file edited pico" src="https://github.com/user-attachments/assets/0f8b2b2f-d88d-4646-a13c-abf094a7ab64" />
 
-**Run Openlane**
+**Run Openlane:**
 
 <img width="1366" height="643" alt="run command after 1hr" src="https://github.com/user-attachments/assets/f9e5c09c-6c5e-4d94-9fad-bc0ea4b95150" />
 
@@ -676,6 +684,8 @@ set ::env(EXTRA_LEFS) [glob $::env(OPENLANE_ROOT)/designs/$::env(DESIGN_NAME)/sr
 <img width="1366" height="643" alt="time delay run after" src="https://github.com/user-attachments/assets/d7bbe8ff-cc5e-4431-824d-e2598e9d84fb" />
 
 <img width="1366" height="643" alt="area after run" src="https://github.com/user-attachments/assets/db532e97-02a2-4f7a-8c32-b0cb087553bd" />
+
+**Commands:**
 
 ```
 prep -design picorv32a -tag 16-11_12-42 -overwrite
@@ -698,7 +708,7 @@ echo $::env(SYNTH_DRIVING_CELL)
 run_synthesis
 ```
 
-**Increase in area and worst negative slack is reduced to zero**
+**Increase in area and worst negative slack is reduced to zero:**
 
 <img width="1366" height="643" alt="new chip area after run" src="https://github.com/user-attachments/assets/57e6bf82-941d-49e0-9f1d-8cc7ce0af1e3" />
 
@@ -711,6 +721,8 @@ run_synthesis
 <img width="1366" height="643" alt="flow failed" src="https://github.com/user-attachments/assets/851fddb2-c4ff-4d5f-a599-88247054bc35" />
 
 Due to an unexpected error change the ```run_floorplan``` command 
+
+**Commands:**
 
 ```
 init_floorplan
@@ -736,15 +748,17 @@ tap_decap_or
 
 **8. Do Post-Synthesis timing analysis with OpenSTA tool.**
 
-Newly created `pre_sta.conf` in `openlane` directory 
+**Newly created `pre_sta.conf` in `openlane` directory:**
 
 <img width="1366" height="643" alt="pre sta conf" src="https://github.com/user-attachments/assets/972e67ba-620b-4898-86e7-bcca4ef2744b" />
 
-Newly Created `my_base.sdc` in `openlane/designs/picorv32a/src` directory 
+**Newly Created `my_base.sdc` in `openlane/designs/picorv32a/src` directory** 
 
 <img width="1366" height="643" alt="mybase1" src="https://github.com/user-attachments/assets/d86cf248-002e-4ee6-8ff7-71b6e6536033" />
 
 <img width="1366" height="643" alt="my base2" src="https://github.com/user-attachments/assets/400551aa-9dca-46b6-bcd4-5111565b65fa" />
+
+**Commands:**
 
 ```
 cd Desktop/work/tools/openlane_working_dir/openlane
@@ -758,7 +772,7 @@ sta pre_sta.conf
 
 <img width="1366" height="643" alt="sta run3" src="https://github.com/user-attachments/assets/4b8631e4-b3c0-4156-ac9a-a10efe60c37f" />
 
-**Commands to include new lef and perform synthesis**
+**Commands to include new lef and perform synthesis:**
 
 ```
 prep -design picorv32a -tag 16-11_16-06 -overwrite
@@ -785,9 +799,11 @@ run_synthesis
 
 **9. Make timing ECO fixes to remove all violations.**
 
-**OR gate of drive strength 2 is driving 4 fanouts**
+**OR gate of drive strength 2 is driving 4 fanouts:**
 
 <img width="1366" height="643" alt="sta run 4th cts" src="https://github.com/user-attachments/assets/29a20ed1-5bc4-49c1-8934-13a9fcdfbc42" />
+
+**Commands:**
 
 ```
 report_net -connections _11672_
@@ -805,9 +821,11 @@ report_checks -fields {net cap slew input_pins} -digits 4
 
 <img width="1366" height="643" alt="sta new com cts3" src="https://github.com/user-attachments/assets/22a74818-dbf4-4f0f-bbb0-850e7657c501" />
 
-**OR gate of drive strength 2 is driving 4 fanouts**
+**OR gate of drive strength 2 is driving 4 fanouts:**
 
 <img width="1366" height="643" alt="sta or2 high" src="https://github.com/user-attachments/assets/c906ccda-78ed-47d0-a30e-90652ab1bda1" />
+
+**Commands:**
 
 ```
 report_net -connections _11675_
@@ -817,13 +835,13 @@ replace_cell _14514_ sky130_fd_sc_hd__or3_4
 report_checks -fields {net cap slew input_pins} -digits 4
 ```
 
-**Slack reduced**
+**Slack reduced:**
 
 <img width="1366" height="643" alt="sta slec red 3rd com" src="https://github.com/user-attachments/assets/7ecb282b-f844-4a6b-8139-8aa39cf3ff87" />
 
 <img width="1366" height="643" alt="image" src="https://github.com/user-attachments/assets/e2c83287-aaa6-4a2a-9d5b-97d08a7b77ac" />
 
-Commands to verify instance `_14506_` is replaced with `sky130_fd_sc_hd__or4_4`
+**Commands to verify instance `_14506_` is replaced with `sky130_fd_sc_hd__or4_4`**
 
 ```
 report_checks -from _29043_ -to _30440_ -through _14506_
@@ -832,7 +850,7 @@ report_checks -from _29043_ -to _30440_ -through _14506_
 
 **10. Replace the old netlist with the new netlist generated after timing ECO fix**
 
-Command to make copy of netlist
+**Command to make copy of netlist:**
 ```
 cd Desktop/work/tools/openlane_working_dir/openlane/designs/picorv32a/runs/16-11_16-06/results/synthesis/
 
@@ -846,6 +864,8 @@ ls
 
 <img width="1366" height="643" alt="fixed eco new netlist com" src="https://github.com/user-attachments/assets/b6e772aa-040d-47a8-b52b-913a7bbf1c62" />
 
+**Commands:**
+
 ```
 help write_verilog
 
@@ -857,7 +877,8 @@ exit
 <img width="1366" height="643" alt="image" src="https://github.com/user-attachments/assets/3474f8f1-f62a-47ce-bc04-0238005636a4" />
 
  
-Command to load the design
+**Command to load the design:**
+
 
 ```
 prep -design picorv32a -tag 16-11_16-06 -overwrite
@@ -886,7 +907,7 @@ run_cts
 
 **11. Post-CTS OpenROAD timing analysis.**
 
-Commands
+**Commands:**
 
 ```
 openroad
@@ -916,7 +937,7 @@ report_checks -path_delay min_max -fields {slew trans net cap input_pins} -forma
 exit
 ```
 
-Screenshots of the same
+**Screenshots of the same:**
 
 <img width="1366" height="643" alt="command run openroad" src="https://github.com/user-attachments/assets/17d210e0-7bdc-4b4e-997d-b3196a5774b1" />
 
@@ -927,7 +948,7 @@ Screenshots of the same
 
 **12. Analyze post-CTS timing in OpenROAD after removing the `sky130_fd_sc_hd__clkbuf_1` entry from the `CTS_CLK_BUFFER_LIST`.**
 
-Commands
+**Commands:**
 
 ```
 echo $::env(CTS_CLK_BUFFER_LIST)
@@ -991,6 +1012,8 @@ echo $::env(CTS_CLK_BUFFER_LIST)
 
 **1. Perform generation of Power Distribution Network (PDN)**
 
+**Commands:**
+
 
 ```
 cd Desktop/work/tools/openlane_working_dir/openlane
@@ -1036,6 +1059,8 @@ gen_pdn
 
 **2. Perfrom detailed routing using TritonRoute**
 
+**Commands:**
+
 ```
 echo $::env(CURRENT_DEF)
 
@@ -1046,7 +1071,7 @@ run_routing
 
 <img width="1366" height="643" alt="routing complete" src="https://github.com/user-attachments/assets/a27e1872-fc23-4d1d-9715-744a270bd0bd" />
 
-**Screenshot of routed def**
+**Screenshot of routed def:**
 
 <img width="1366" height="643" alt="routed def1" src="https://github.com/user-attachments/assets/98a5209f-c6c0-4736-905d-e2299695ef6d" />
 
@@ -1056,6 +1081,8 @@ run_routing
 
 **3. Post-Route parasitic extraction using SPEF extractor.**
 
+**Commands:**
+
 ```
 cd Desktop/work/tools/SPEF_EXTRACTOR
 
@@ -1063,6 +1090,8 @@ python3 main.py /home/vsduser/Desktop/work/tools/openlane_working_dir/openlane/d
 ```
 
 **4. Post-Route OpenSTA timing analysis**
+
+**Commands:**
 
 ```
 openroad

@@ -1,16 +1,11 @@
 # **Digital VLSI SoC Design and Planning**
 
-## Project Info
+![OS](https://img.shields.io/badge/OS-Linux-orange?style=for-the-badge)
+![EDA Tools](https://img.shields.io/badge/EDA%20Tools-OpenLANE%2C%20Yosys%2C%20ABC%2C%20OpenROAD%2C%20TritonRoute%2C%20OpenSTA%2C%20Magic%2C%20Netgen%2C%20GUNA%2C%20Qrouter%2C%20KLayout%2C%20Ngspice-blueviolet?style=for-the-badge)
+![Languages](https://img.shields.io/badge/Languages-Verilog%2C%20Bash%2C%20TCL-red?style=for-the-badge)
+![Verilog](https://img.shields.io/badge/Verilog-96%25-blue?style=for-the-badge)
+![Last Commit](https://img.shields.io/github/last-commit/AnikaVenkatesh/SoC-Design-and-Planning-NASSCOM-VSD?style=for-the-badge)
 
-![OS](https://img.shields.io/badge/OS-linux-informational)
-![EDA Tools](https://img.shields.io/badge/EDA%20Tools-OpenLANE%2C%20Yosys%2C%20OpenROAD-blue)
-
-![GitHub last commit](https://img.shields.io/github/last-commit/AnikaVenkatesh/SoC-Design-and-Planning-NASSCOM-VSD)
-![GitHub language count](https://img.shields.io/github/languages/count/AnikaVenkatesh/SoC-Design-and-Planning-NASSCOM-VSD)
-![GitHub top language](https://img.shields.io/github/languages/top/AnikaVenkatesh/SoC-Design-and-Planning-NASSCOM-VSD)
-![GitHub repo size](https://img.shields.io/github/repo-size/AnikaVenkatesh/SoC-Design-and-Planning-NASSCOM-VSD)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/AnikaVenkatesh/SoC-Design-and-Planning-NASSCOM-VSD)
-![GitHub repo file count](https://img.shields.io/github/directory-file-count/AnikaVenkatesh/SoC-Design-and-Planning-NASSCOM-VSD)
 
 <img width="1486" height="725" alt="image" src="https://github.com/user-attachments/assets/0ee3ff78-0e4d-4258-bfc7-db8f6f3be8fe" /> 
 A 2-week Digital VLSI SoC Design and Planning workshop conducted by VSD in collaboration with NASSCOM. The workshop focuses on the end-to-end ASIC design process, beginning with RTL and culminating in the GDS file, implemented through the OpenLane design flow.

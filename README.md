@@ -1,10 +1,21 @@
 # **Digital VLSI SoC Design and Planning**
 
-![OS](https://img.shields.io/badge/OS-Linux-orange?style=for-the-badge)
-![EDA Tools](https://img.shields.io/badge/EDA%20Tools-OpenLANE%2C%20Yosys%2C%20ABC%2C%20OpenROAD%2C%20TritonRoute%2C%20OpenSTA%2C%20Magic%2C%20Netgen%2C%20GUNA%2C%20Qrouter%2C%20KLayout%2C%20Ngspice-blueviolet?style=for-the-badge)
-![Languages](https://img.shields.io/badge/Languages-Verilog%2C%20Bash%2C%20TCL-red?style=for-the-badge)
-![Verilog](https://img.shields.io/badge/Verilog-96%25-blue?style=for-the-badge)
-![Last Commit](https://img.shields.io/github/last-commit/AnikaVenkatesh/SoC-Design-and-Planning-NASSCOM-VSD?style=for-the-badge)
+![OS](https://img.shields.io/badge/os-linux-important)
+
+![OpenLANE](https://img.shields.io/badge/OpenLANE-tool-blue)
+![Yosys](https://img.shields.io/badge/Yosys-tool-blue)
+![OpenROAD](https://img.shields.io/badge/OpenROAD-tool-blue)
+![TritonRoute](https://img.shields.io/badge/TritonRoute-tool-blue)
+![OpenSTA](https://img.shields.io/badge/OpenSTA-tool-blue)
+![Magic](https://img.shields.io/badge/Magic-tool-blue)
+![Netgen](https://img.shields.io/badge/Netgen-tool-blue)
+![KLayout](https://img.shields.io/badge/KLayout-tool-blue)
+![GUNA](https://img.shields.io/badge/GUNA-tool-blue)
+
+![Languages](https://img.shields.io/badge/languages-verilog%20%7C%20bash%20%7C%20TCL-red)
+![Verilog](https://img.shields.io/badge/Verilog-Primary_Language-green)
+![Last%20Commit](https://img.shields.io/badge/Last_Commit-Today-orange)
+
 
 
 <img width="1486" height="725" alt="image" src="https://github.com/user-attachments/assets/0ee3ff78-0e4d-4258-bfc7-db8f6f3be8fe" /> 

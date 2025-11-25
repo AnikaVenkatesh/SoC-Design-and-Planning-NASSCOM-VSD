@@ -1,6 +1,6 @@
 # **Digital VLSI SoC Design and Planning**
 
-![os](https://img.shields.io/badge/os-linux-orange)
+![os](https://img.shields.io/badge/OS-linux-orange)
 ![eda tools](https://img.shields.io/badge/EDA%20Tools-OpenLANE%2C%20Yosys%2C%20abc%2C%20OpenROAD%2C%20TritonRoute%2C%20OpenSTA%2C%20magic%2C%20netgen%2C%20GUNA-blueviolet)
 ![languages](https://img.shields.io/badge/languages-verilog%2C%20bash%2C%20TCL-red)
 ![last commit](https://img.shields.io/badge/last%20commit-today-brightgreen)

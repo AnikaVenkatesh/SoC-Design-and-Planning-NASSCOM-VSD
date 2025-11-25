@@ -1,20 +1,10 @@
 # **Digital VLSI SoC Design and Planning**
 
-![OS](https://img.shields.io/badge/os-linux-important)
-
-![OpenLANE](https://img.shields.io/badge/OpenLANE-tool-blue)
-![Yosys](https://img.shields.io/badge/Yosys-tool-blue)
-![OpenROAD](https://img.shields.io/badge/OpenROAD-tool-blue)
-![TritonRoute](https://img.shields.io/badge/TritonRoute-tool-blue)
-![OpenSTA](https://img.shields.io/badge/OpenSTA-tool-blue)
-![Magic](https://img.shields.io/badge/Magic-tool-blue)
-![Netgen](https://img.shields.io/badge/Netgen-tool-blue)
-![KLayout](https://img.shields.io/badge/KLayout-tool-blue)
-![GUNA](https://img.shields.io/badge/GUNA-tool-blue)
-
-![Languages](https://img.shields.io/badge/languages-verilog%20%7C%20bash%20%7C%20TCL-red)
-![Verilog](https://img.shields.io/badge/Verilog-Primary_Language-green)
-![Last%20Commit](https://img.shields.io/badge/Last_Commit-Today-orange)
+![os](https://img.shields.io/badge/os-linux-orange)
+![eda tools](https://img.shields.io/badge/EDA%20Tools-OpenLANE%2C%20Yosys%2C%20abc%2C%20OpenROAD%2C%20TritonRoute%2C%20OpenSTA%2C%20magic%2C%20netgen%2C%20GUNA-blueviolet)
+![languages](https://img.shields.io/badge/languages-verilog%2C%20bash%2C%20TCL-red)
+![last commit](https://img.shields.io/badge/last%20commit-today-brightgreen)
+![verilog](https://img.shields.io/badge/verilog-96.2%25-blue)
 
 
 

@@ -3,7 +3,7 @@
 ![os](https://img.shields.io/badge/OS-linux-orange)
 ![eda tools](https://img.shields.io/badge/EDA%20Tools-OpenLANE%2C%20Yosys%2C%20abc%2C%20OpenROAD%2C%20TritonRoute%2C%20OpenSTA%2C%20magic%2C%20netgen%2C%20GUNA-blueviolet)
 ![languages](https://img.shields.io/badge/languages-verilog%2C%20bash%2C%20TCL-red)
-![Last Commit](https://img.shields.io/github/last-commit/AnikaVenkatesh/SoC-Design-and-Planning-NASSCOM-VSD?style=flat-square)
+![Last Commit](https://img.shields.io/github/last-commit/AnikaVenkatesh/SoC-Design-and-Planning-NASSCOM-VSD?style=flat)
 ![verilog](https://img.shields.io/badge/verilog-96.2%25-blue)
 
 
